@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <musicBands>
     <musicBand>
-        <id>1</id>
         <name>Pink Floyd</name>
         <coordinates>
             <x>10.5</x>
             <y>860</y>
         </coordinates>
-        <numberOfParticipants>4</numberOfParticipants>
-        <genre>PROGRESSIVE_ROCK</genre>
+        <numberOfParticipants>5</numberOfParticipants>
+        <genre>JAZZ</genre>
         <frontMan>
-            <name>Syd Barrett</name>
-            <birthday>1946-01-06</birthday>
+            <name>JACK</name>
+            <birthday>2005-12-12</birthday>
             <hairColor>GREEN</hairColor>
             <nationality>SPAIN</nationality>
         </frontMan>
     </musicBand>
     <musicBand>
-        <id>2</id>
         <name>Led Zeppelin</name>
         <coordinates>
             <x>15.7</x>

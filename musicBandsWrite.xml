@@ -32,30 +32,4 @@
             <nationality>CHINA</nationality>
         </frontMan>
     </musicBand>
-    <musicBand>
-        <id>1741089888664</id>
-        <name>s</name>
-        <coordinates>
-            <x>3.0</x>
-            <y>2</y>
-        </coordinates>
-        <frontMan>
-            <name>3</name>
-            <hairColor>GREEN</hairColor>
-            <nationality>SPAIN</nationality>
-        </frontMan>
-    </musicBand>
-    <musicBand>
-        <id>1741089897389</id>
-        <name>f</name>
-        <coordinates>
-            <x>3.0</x>
-            <y>3</y>
-        </coordinates>
-        <frontMan>
-            <name>3</name>
-            <hairColor>GREEN</hairColor>
-            <nationality>SPAIN</nationality>
-        </frontMan>
-    </musicBand>
 </musicBands>

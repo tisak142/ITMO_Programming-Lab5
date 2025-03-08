@@ -14,8 +14,20 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * Класс DOMWriter отвечает за запись данных коллекции MusicBand в XML-файл.
+ * <p>
+ * Использует DOM (Document Object Model) для создания XML-документа и записи его в файл.
+ * </p>
+ */
 public class DOMWriter {
 
+    /**
+     * Записывает коллекцию MusicBand в XML-файл.
+     *
+     * @param filename имя файла для записи
+     * @param musicBands коллекция объектов MusicBand
+     */
     public static void writeToFile(String filename, ArrayList<MusicBand> musicBands) {
         try {
             // Создаем новый XML-документ
@@ -49,6 +61,13 @@ public class DOMWriter {
         }
     }
 
+    /**
+     * Создает XML-элемент для объекта MusicBand.
+     *
+     * @param document XML-документ
+     * @param band объект MusicBand
+     * @return XML-элемент, представляющий MusicBand
+     */
     private static Element createMusicBandElement(Document document, MusicBand band) {
         // Создаем элемент для MusicBand
         Element bandElement = document.createElement("musicBand");

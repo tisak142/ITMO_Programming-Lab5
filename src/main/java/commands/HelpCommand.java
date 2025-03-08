@@ -2,12 +2,29 @@ package commands;
 
 import java.util.Scanner;
 
+/**
+ * Класс HelpCommand реализует команду для вывода справки по доступным командам.
+ * <p>
+ * Команда не принимает аргументов. Выводит список всех доступных команд
+ * с их кратким описанием.
+ * </p>
+ */
 public class HelpCommand implements Command {
 
+    /**
+     * Выполняет команду для вывода справки по доступным командам.
+     * <p>
+     * Команда не принимает аргументов. Выводит список всех доступных команд
+     * с их кратким описанием.
+     * </p>
+     *
+     * @param in сканер для ввода данных от пользователя (не используется)
+     * @param args аргументы команды (не используются)
+     */
     @Override
-    public void execute(Scanner in, String... args){
-        if (args.length != 0){
-            System.out.println("This command does not take any arguments");
+    public void execute(Scanner in, String... args) {
+        if (args.length != 0) {
+            System.err.println("This command does not take any arguments");
             return;
         }
         System.out.println("""
@@ -30,6 +47,11 @@ public class HelpCommand implements Command {
                 """);
     }
 
+    /**
+     * Возвращает название команды.
+     *
+     * @return название команды ("help")
+     */
     @Override
     public String getName() {
         return "help";

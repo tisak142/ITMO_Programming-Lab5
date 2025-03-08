@@ -5,11 +5,19 @@ import commands.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Класс Invoker отвечает за обработку и выполнение команд, введенных пользователем.
+ * <p>
+ * Invoker хранит список доступных команд и выполняет их в зависимости от ввода пользователя.
+ * </p>
+ */
 public class Invoker {
-    private static final HashMap<String, Command> commands = new HashMap<>();
-    private final Scanner in;
+    private static final HashMap<String, Command> commands = new HashMap<>(); // Хранилище команд, где ключ — название команды, а значение — объект команды.
+
+    private final Scanner in; // Сканер для ввода данных от пользователя.
 
     {
+        // Инициализация команд и добавление их в хранилище
         commands.put("help", new HelpCommand());
         commands.put("info", new InfoCommand());
         commands.put("add", new AddCommand());
@@ -28,10 +36,24 @@ public class Invoker {
         commands.put("group_counting_by_name", new CountingByNameCommand());
     }
 
+    /**
+     * Создает новый объект Invoker.
+     *
+     * @param in сканер для ввода данных от пользователя
+     */
     public Invoker(Scanner in) {
         this.in = in;
     }
 
+    /**
+     * Обрабатывает введенную пользователем строку и выполняет соответствующую команду.
+     * <p>
+     * Метод разбивает строку на команду и аргументы, находит соответствующую команду
+     * в хранилище и выполняет её. Если команда не найдена, выводится сообщение об ошибке.
+     * </p>
+     *
+     * @param line строка, введенная пользователем
+     */
     public void invoke(String line) {
         String[] args = line.trim().split("\\s+");
         if (args.length == 0) {
