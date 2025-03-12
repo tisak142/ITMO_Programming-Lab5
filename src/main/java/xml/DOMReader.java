@@ -150,12 +150,28 @@ public class DOMReader {
         Color hairColor = null;
         String testHairColor = getElementValue(frontManElement, "hairColor");
         Set<String> colors = Set.of("GREEN", "BLUE", "ORANGE", "WHITE");
-        if (!colors.contains(testHairColor)) {
-            System.err.println("Error when loading the musicBands to collection. Invalid color of hair. It has to be one of GREEN, BLUE, ORANGE, WHITE");
-            return null;
+        if (testHairColor == null || testHairColor.isEmpty()) {
+            System.err.println("Error when loading the musicBands to collection. Color of hair cannot be null or empty");
+                return null;
         } else {
-            hairColor = Color.valueOf(testHairColor);
+            if (!colors.contains(testHairColor)) {
+                System.err.println("Error when loading the musicBands to collection. Invalid color of hair. It has to be one of GREEN, BLUE, ORANGE, WHITE");
+                return null;
+            } else {
+                hairColor = Color.valueOf(testHairColor);
+            }
         }
+//        if (testHairColor != null) {
+//            if (!colors.contains(testHairColor)) {
+//                System.err.println("Error when loading the musicBands to collection. Invalid color of hair. It has to be one of GREEN, BLUE, ORANGE, WHITE");
+//                return null;
+//            } else {
+//                hairColor = Color.valueOf(testHairColor);
+//            }
+//        } else {
+//            System.err.println("Error when loading the musicBands to collection. HairColor cannot be null");
+//        }
+
 
         // Парсинг даты рождения
         java.util.Date birthday = null;
@@ -166,7 +182,6 @@ public class DOMReader {
                 birthday = java.util.Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
                 if (!isDateNotLaterThanToday(birthday)) {
                     System.err.println("Error when loading the musicBands to collection. An incorrect date was entered. The date of birth cannot be later than today.");
-                    birthday = null; // Сбрасываем значение, чтобы попросить ввод заново
                     return null;
                 }
             } catch (java.time.format.DateTimeParseException e) {

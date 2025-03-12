@@ -35,14 +35,16 @@ public class Person {
      */
     public Person(String name, java.util.Date birthday, Color hairColor, Country nationality) {
         if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("name cannot be null or empty");
+            System.err.println("Error when creation musicBand. name cannot be null or empty");
+            System.exit(1);
         }
         this.name = name;
 
         this.birthday = birthday;
 
         if (hairColor == null) {
-            throw new IllegalArgumentException("hairColor cannot be null");
+            System.err.println("Error when creation musicBand. HairColor cannot be null");
+            System.exit(1);
         }
         this.hairColor = hairColor;
 

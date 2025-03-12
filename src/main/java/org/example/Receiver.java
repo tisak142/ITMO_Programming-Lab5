@@ -4,6 +4,7 @@ import classes.*;
 import xml.DOMReader;
 import xml.DOMWriter;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
@@ -18,7 +19,7 @@ import java.util.*;
  */
 public class Receiver {
     private final ArrayList<MusicBand> bands = new ArrayList<>(); // Коллекция для хранения объектов MusicBand.
-
+    private static ArrayList<String> scriptsHistory = new ArrayList<>();
     private static Receiver instance; // Единственный экземпляр класса Receiver (реализация паттерна Singleton).
 
     private final LocalDate date; // Дата инициализации коллекции.
@@ -41,7 +42,7 @@ public class Receiver {
     }
 
     /**
-     * Обновляет элемент коллекции по указанному id.
+     * Обновляет элемент коллекции по-указанному id.
      *
      * @param idCounter id элемента, который нужно обновить
      * @param band новый объект MusicBand для замены
@@ -77,6 +78,35 @@ public class Receiver {
         }
         return false;
     }
+
+
+    public void executeScript(Scanner in, String fileName) {
+        File scriptFile = new File(fileName);
+        // Проверяем, существует ли файл
+        if (!scriptFile.exists() || !scriptFile.isFile()) {
+            System.err.println("Error file " + fileName +  " not found: ");
+            return;
+        } else if (scriptsHistory.contains(fileName)) {
+            System.err.println("Error file " + fileName +  " is already executing");
+            return;
+        }
+        scriptsHistory.add(fileName);
+        try (Scanner fileScanner = new Scanner(scriptFile)) {
+            while (fileScanner.hasNextLine()) {
+                String commandLine = fileScanner.nextLine().trim();
+                // Пропускаем пустые строки и комментарии
+                if (commandLine.isEmpty() || commandLine.startsWith("#")) {
+                    continue;
+                }
+                System.out.println("executing command  " + commandLine);
+                // Выполняем команду
+                new Invoker(in).invoke(commandLine);
+            }
+        } catch (Exception e) {
+            System.err.println("Error while executing script " + e.getMessage());
+        }
+    }
+
 
     /**
      * Добавляет элемент в коллекцию, если его значение превышает значение наибольшего элемента.

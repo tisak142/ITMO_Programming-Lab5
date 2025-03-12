@@ -1,7 +1,5 @@
-add
-
-add
-
 info
-
+show
+add
+show
 save

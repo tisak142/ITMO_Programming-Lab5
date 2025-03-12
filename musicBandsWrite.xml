@@ -7,11 +7,11 @@
             <x>10.5</x>
             <y>860</y>
         </coordinates>
-        <numberOfParticipants>4</numberOfParticipants>
-        <genre>PROGRESSIVE_ROCK</genre>
+        <numberOfParticipants>5</numberOfParticipants>
+        <genre>JAZZ</genre>
         <frontMan>
-            <name>Syd Barrett</name>
-            <birthday>1946-01-06</birthday>
+            <name>JACK</name>
+            <birthday>Mon Dec 12 00:00:00 MSK 2005</birthday>
             <hairColor>GREEN</hairColor>
             <nationality>SPAIN</nationality>
         </frontMan>
@@ -27,7 +27,7 @@
         <genre>BLUES</genre>
         <frontMan>
             <name>Robert Plant</name>
-            <birthday>1948-08-20</birthday>
+            <birthday>Fri Aug 20 00:00:00 MSK 1948</birthday>
             <hairColor>BLUE</hairColor>
             <nationality>CHINA</nationality>
         </frontMan>

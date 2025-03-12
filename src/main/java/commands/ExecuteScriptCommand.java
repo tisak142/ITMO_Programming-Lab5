@@ -4,6 +4,7 @@ import org.example.Invoker;
 import org.example.Receiver;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -43,33 +44,8 @@ public class ExecuteScriptCommand implements Command {
             System.err.println("Mistake: the script file name is not specified");
             return;
         }
-
         String fileName = args[0];
-        File scriptFile = new File(fileName);
-
-        // Проверяем, существует ли файл
-        if (!scriptFile.exists() || !scriptFile.isFile()) {
-            System.err.println("Error file " + fileName +  " not found: ");
-            return;
-        }
-
-        try (Scanner fileScanner = new Scanner(scriptFile)) {
-            while (fileScanner.hasNextLine()) {
-                String commandLine = fileScanner.nextLine().trim();
-
-                // Пропускаем пустые строки и комментарии
-                if (commandLine.isEmpty() || commandLine.startsWith("#")) {
-                    continue;
-                }
-
-                System.out.println("executing command  " + commandLine);
-
-                // Выполняем команду
-                invoker.invoke(commandLine);
-            }
-        } catch (Exception e) {
-            System.err.println("Error while executing script " + e.getMessage());
-        }
+        receiver.executeScript(in, fileName);
     }
 
     /**
