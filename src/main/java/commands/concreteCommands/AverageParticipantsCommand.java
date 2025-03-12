@@ -1,31 +1,33 @@
-package commands;
+package commands.concreteCommands;
 
+import commands.Command;
 import org.example.Receiver;
 
 import java.util.Scanner;
 
 /**
- * Класс MaxByGenreCommand реализует команду для вывода элемента коллекции
- * с максимальным значением поля genre.
+ * Класс AverageParticipantsCommand реализует команду для вычисления среднего значения
+ * количества участников (numberOfParticipants) для всех элементов коллекции.
  * <p>
  * Команда не принимает аргументов. Результат выводится в консоль.
  * </p>
  */
-public class MaxByGenreCommand implements Command {
+public class AverageParticipantsCommand implements Command {
     Receiver receiver = Receiver.getInstance(); // Экземпляр Receiver для выполнения команды.
 
     /**
      * Возвращает название команды.
      *
-     * @return название команды ("max_by_genre")
+     * @return название команды ("AverageParticipantsCommand")
      */
     @Override
     public String getName() {
-        return "max_by_genre";
+        return "AverageParticipantsCommand";
     }
 
     /**
-     * Выполняет команду для вывода элемента коллекции с максимальным значением поля genre.
+     * Выполняет команду для вычисления среднего значения количества участников
+     * (numberOfParticipants) для всех элементов коллекции.
      * <p>
      * Команда не принимает аргументов. Результат выводится в консоль.
      * </p>
@@ -39,6 +41,6 @@ public class MaxByGenreCommand implements Command {
             System.err.println("This command does not take any arguments");
             return;
         }
-        receiver.maxByGenre();
+        System.out.println("Average number of participants in groups is " + receiver.getAverageNumber());
     }
 }

@@ -1,6 +1,7 @@
 package org.example;
 
 import commands.*;
+import commands.concreteCommands.*;
 
 import java.util.HashMap;
 import java.util.Scanner;

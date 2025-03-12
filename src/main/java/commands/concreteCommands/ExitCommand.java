@@ -1,4 +1,6 @@
-package commands;
+package commands.concreteCommands;
+
+import commands.Command;
 
 import java.util.Scanner;
 

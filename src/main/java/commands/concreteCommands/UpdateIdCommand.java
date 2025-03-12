@@ -1,6 +1,7 @@
-package commands;
+package commands.concreteCommands;
 
 import classes.MusicBand;
+import commands.Command;
 import org.example.Receiver;
 
 import java.util.Scanner;

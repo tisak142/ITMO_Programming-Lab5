@@ -1,5 +1,6 @@
-package commands;
+package commands.concreteCommands;
 
+import commands.Command;
 import org.example.Receiver;
 
 import java.util.Scanner;

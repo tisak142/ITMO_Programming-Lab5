@@ -1,10 +1,9 @@
-package commands;
+package commands.concreteCommands;
 
+import commands.Command;
 import org.example.Invoker;
 import org.example.Receiver;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
