@@ -28,6 +28,33 @@
                     </archive>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.5.0</version>  <!-- Актуальная версия плагина -->
+                <configuration>
+                    <source>17</source>  <!-- Версия Java, согласованная с проектом -->
+                    <encoding>UTF-8</encoding>  <!-- Кодировка исходных файлов -->
+                    <reportOutputDirectory>${project.basedir}/docs</reportOutputDirectory>  <!-- Папка для документации -->
+                    <destDir>apidocs</destDir>  <!-- Подпапка внутри docs (опционально) -->
+                    <doclint>none</doclint>  <!-- Отключение проверки ошибок в Javadoc (опционально) -->
+                    <show>public</show>  <!-- Уровень видимости (public, protected, package, private) -->
+                    <windowtitle>Lab5 API Documentation</windowtitle>  <!-- Заголовок окна документации -->
+                    <doctitle>Lab5 API Documentation</doctitle>  <!-- Заголовок на странице документации -->
+                    <bottom>
+                        ITMO
+                    </bottom>  <!-- Нижний колонтитул -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>javadoc</goal>  <!-- Генерация HTML-документации -->
+                        </goals>
+                        <phase>package</phase>  <!-- Интеграция в фазу сборки -->
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

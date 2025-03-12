@@ -292,7 +292,7 @@ public class Receiver {
         MusicBand band = bands.get(0);
         MusicGenre genre = band.getGenre();
         for (MusicBand b : bands) {
-            if (b.getGenre().compareTo(genre) > 0) {
+            if (b.getGenre().toString().compareTo(genre.toString()) > 0) {
                 band = b;
                 genre = b.getGenre();
             }
