@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<musicBands>
+    <musicBand>
+        <id>1</id>
+        <name>Pink Floyd</name>
+        <coordinates>
+            <x>10.5</x>
+            <y>860</y>
+        </coordinates>
+        <numberOfParticipants>5</numberOfParticipants>
+        <genre>JAZZ</genre>
+        <frontMan>
+            <name>JACK</name>
+            <birthday>Mon Dec 12 00:00:00 MSK 2005</birthday>
+            <hairColor>GREEN</hairColor>
+            <nationality>SPAIN</nationality>
+        </frontMan>
+    </musicBand>
+    <musicBand>
+        <id>3</id>
+        <name>Pink Floyd</name>
+        <coordinates>
+            <x>10.5</x>
+            <y>860</y>
+        </coordinates>
+        <numberOfParticipants>5</numberOfParticipants>
+        <genre>JAZZ</genre>
+        <frontMan>
+            <name>JACK</name>
+            <birthday>Mon Dec 12 00:00:00 MSK 2005</birthday>
+            <hairColor>GREEN</hairColor>
+            <nationality>SPAIN</nationality>
+        </frontMan>
+    </musicBand>
+</musicBands>

@@ -1,0 +1,22 @@
+-encoding
+'UTF-8'
+-protected
+-source
+'1.8'
+-sourcepath
+'C:/Users/User/IdeaProjects/ITMO_Programming-Lab5/src/main/java;C:/Users/User/IdeaProjects/ITMO_Programming-Lab5/target/generated-sources/annotations'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/User/IdeaProjects/ITMO_Programming-Lab5/doc'
+-docencoding
+'UTF-8'
+-doctitle
+'Lab5 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'Lab5 1.0-SNAPSHOT API'
