@@ -12,6 +12,7 @@ import java.io.File;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Set;
 
 import static org.example.Receiver.isDateNotLaterThanToday;
@@ -23,7 +24,6 @@ import static org.example.Receiver.isDateNotLaterThanToday;
  * </p>
  */
 public class DOMReader {
-
     /**
      * Читает данные из XML-файла и преобразует их в список объектов MusicBand.
      *
@@ -161,17 +161,6 @@ public class DOMReader {
                 hairColor = Color.valueOf(testHairColor);
             }
         }
-//        if (testHairColor != null) {
-//            if (!colors.contains(testHairColor)) {
-//                System.err.println("Error when loading the musicBands to collection. Invalid color of hair. It has to be one of GREEN, BLUE, ORANGE, WHITE");
-//                return null;
-//            } else {
-//                hairColor = Color.valueOf(testHairColor);
-//            }
-//        } else {
-//            System.err.println("Error when loading the musicBands to collection. HairColor cannot be null");
-//        }
-
 
         // Парсинг даты рождения
         java.util.Date birthday = null;

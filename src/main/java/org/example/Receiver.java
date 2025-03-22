@@ -2,11 +2,13 @@ package org.example;
 
 import classes.*;
 import xml.DOMReader;
+import xml.DOMReaderScript;
 import xml.DOMWriter;
 
 import java.io.File;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 
 /**
@@ -84,23 +86,28 @@ public class Receiver {
         File scriptFile = new File(fileName);
         // Проверяем, существует ли файл
         if (!scriptFile.exists() || !scriptFile.isFile()) {
-            System.err.println("Error file " + fileName +  " not found: ");
+            System.err.println("Error file " + fileName +  " not found");
             return;
         } else if (scriptsHistory.contains(fileName)) {
             System.err.println("Error file " + fileName +  " is already executing");
             return;
         }
         scriptsHistory.add(fileName);
-        try (Scanner fileScanner = new Scanner(scriptFile)) {
+        try (Scanner fileScanner = new Scanner(scriptFile);) {
             while (fileScanner.hasNextLine()) {
                 String commandLine = fileScanner.nextLine().trim();
                 // Пропускаем пустые строки и комментарии
-                if (commandLine.isEmpty() || commandLine.startsWith("#")) {
+                if (commandLine.isEmpty() || commandLine.startsWith("//") || commandLine.startsWith("<")) {
                     continue;
                 }
                 System.out.println("executing command  " + commandLine);
                 // Выполняем команду
-                new Invoker(in).invoke(commandLine);
+
+                if (commandLine.equals("add")) {
+                    bands.add(DOMReaderScript.parseScriptAddCommand(fileName));
+                } else {
+                    new Invoker(in).invoke(commandLine);
+                }
             }
         } catch (Exception e) {
             System.err.println("Error while executing script " + e.getMessage());
@@ -175,6 +182,7 @@ public class Receiver {
     public void add(MusicBand band) {
         bands.add(band);
     }
+
 
     /**
      * Возвращает дату инициализации коллекции.
@@ -265,7 +273,9 @@ public class Receiver {
     public float getAverageNumber() {
         float counter = 0;
         for (MusicBand band : bands) {
-            counter += band.getNumberOfParticipants();
+            if (band.getNumberOfParticipants() != null) {
+                counter += band.getNumberOfParticipants();
+            }
         }
         return counter / bands.size();
     }
@@ -289,13 +299,26 @@ public class Receiver {
      * Выводит элемент коллекции с максимальным значением поля genre.
      */
     public void maxByGenre() {
-        MusicBand band = bands.get(0);
-        MusicGenre genre = band.getGenre();
+        MusicBand band = null;
+        MusicGenre genre = null;
         for (MusicBand b : bands) {
-            if (b.getGenre().toString().compareTo(genre.toString()) > 0) {
-                band = b;
+            if (b.getGenre() != null) {
+                band = bands.get(0);
                 genre = b.getGenre();
             }
+        }
+        if (band == null) {
+            System.out.println("The collection is empty");
+            return;
+        }
+        for (MusicBand b : bands) {
+            if (b.getGenre() != null) {
+                if (b.getGenre().toString().compareTo(genre.toString()) > 0) {
+                    band = b;
+                    genre = b.getGenre();
+                }
+            }
+
         }
         System.out.println(band);
     }
@@ -445,7 +468,7 @@ public class Receiver {
             }
         }
 
-        java.util.Date birthday = null;
+        Date birthday = null;
         while (true) {
             System.out.print("Enter the date of birth (YYYY-MM-DD, or leave it blank): ");
             String birthdayInput = scanner.nextLine().trim();
@@ -454,14 +477,14 @@ public class Receiver {
             }
             try {
                 LocalDate localDate = LocalDate.parse(birthdayInput);
-                birthday = java.util.Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                birthday = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
                 if (!isDateNotLaterThanToday(birthday)) {
                     System.out.println("Mistake: The date of birth cannot be later than today.");
                     birthday = null; // Сбрасываем значение, чтобы попросить ввод заново
                     continue;  // Возвращаемся к началу цикла (переходим к следующей итерации)
                 }
                 break; // Если парсинг успешен, выходим из цикла
-            } catch (java.time.format.DateTimeParseException e) {
+            } catch (DateTimeParseException e) {
                 System.out.println("Error: An incorrect date was entered. Please use the YYYY-MM-DD format.");
             }
         }

@@ -2,7 +2,6 @@ package org.example;
 
 import commands.*;
 import commands.concreteCommands.*;
-
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -14,9 +13,7 @@ import java.util.Scanner;
  */
 public class Invoker {
     private static final HashMap<String, Command> commands = new HashMap<>(); // Хранилище команд, где ключ — название команды, а значение — объект команды.
-
-    private final Scanner in; // Сканер для ввода данных от пользователя.
-
+    private final Scanner in; // Сканер для ввода данных от пользователя
     {
         // Инициализация команд и добавление их в хранилище
         commands.put("help", new HelpCommand());
@@ -56,14 +53,13 @@ public class Invoker {
      * @param line строка, введенная пользователем
      */
     public void invoke(String line) {
-        String[] args = line.trim().split("\\s+");
-        if (args.length == 0) {
-            System.out.println("Error: the command is not specified.");
-            return;
+        if (line.trim().isEmpty()) {
+            return; // Игнорируем пустую строку
         }
-
+        String[] args = line.trim().split("\\s+");
         Command command = null;
         String[] commandArgs = new String[0];
+
 
         // Определяем команду и аргументы
         if (args.length == 1) {
@@ -76,7 +72,7 @@ public class Invoker {
                 // Проверяем, может быть это команда из двух слов (например, "update id")
                 command = commands.get(args[0] + " " + args[1]);
                 if (command != null) {
-                    System.out.println("Error: please enter ai id");
+                    System.out.println("Error: please enter an id");
                     return;
                 }
             } else {

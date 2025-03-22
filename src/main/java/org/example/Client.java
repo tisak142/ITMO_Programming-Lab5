@@ -1,5 +1,8 @@
 package org.example;
 
+import xml.DOMReaderScript;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -11,7 +14,7 @@ import java.util.Scanner;
  */
 public class Client {
     /**
-     * Точка входа в программу.
+     * Точка входа в программу.ы
      * <p>
      * Запускает интерактивный режим работы с командами. Пользователь вводит команды,
      * которые затем передаются в Invoker для выполнения.

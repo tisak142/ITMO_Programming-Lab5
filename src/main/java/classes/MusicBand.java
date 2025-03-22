@@ -220,7 +220,13 @@ public class MusicBand implements Comparable<MusicBand> {
      */
     @Override
     public int compareTo(MusicBand o) {
-        return numberOfParticipants.compareTo(o.numberOfParticipants);
+        Long numOfPart1 = this.getNumberOfParticipants();
+        Long numOfPart2 = o.getNumberOfParticipants();
+        if (numOfPart1 == null || numOfPart2 == null) {
+            return name.compareTo(o.name);
+        } else {
+            return numberOfParticipants.compareTo(o.numberOfParticipants);
+        }
     }
 
     /**
