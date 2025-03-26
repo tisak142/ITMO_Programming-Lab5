@@ -31,27 +31,27 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.5.0</version>  <!-- Актуальная версия плагина -->
+                <version>3.5.0</version>
                 <configuration>
-                    <source>17</source>  <!-- Версия Java, согласованная с проектом -->
-                    <encoding>UTF-8</encoding>  <!-- Кодировка исходных файлов -->
-                    <reportOutputDirectory>${project.basedir}/docs</reportOutputDirectory>  <!-- Папка для документации -->
-                    <destDir>apidocs</destDir>  <!-- Подпапка внутри docs (опционально) -->
-                    <doclint>none</doclint>  <!-- Отключение проверки ошибок в Javadoc (опционально) -->
-                    <show>public</show>  <!-- Уровень видимости (public, protected, package, private) -->
-                    <windowtitle>Lab5 API Documentation</windowtitle>  <!-- Заголовок окна документации -->
-                    <doctitle>Lab5 API Documentation</doctitle>  <!-- Заголовок на странице документации -->
+                    <source>17</source>
+                    <encoding>UTF-8</encoding>
+                    <reportOutputDirectory>${project.basedir}/docs</reportOutputDirectory>
+                    <destDir>apidocs</destDir>
+                    <doclint>none</doclint>
+                    <show>public</show>
+                    <windowtitle>Lab5 API Documentation</windowtitle>
+                    <doctitle>Lab5 API Documentation</doctitle>
                     <bottom>
                         ITMO
-                    </bottom>  <!-- Нижний колонтитул -->
+                    </bottom>
                 </configuration>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
                         <goals>
-                            <goal>javadoc</goal>  <!-- Генерация HTML-документации -->
+                            <goal>javadoc</goal>
                         </goals>
-                        <phase>package</phase>  <!-- Интеграция в фазу сборки -->
+                        <phase>package</phase>
                     </execution>
                 </executions>
             </plugin>

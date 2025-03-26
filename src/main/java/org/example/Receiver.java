@@ -84,6 +84,7 @@ public class Receiver {
 
     public void executeScript(Scanner in, String fileName) {
         File scriptFile = new File(fileName);
+        boolean isEmpty = true;
         // Проверяем, существует ли файл
         if (!scriptFile.exists() || !scriptFile.isFile()) {
             System.err.println("Error file " + fileName +  " not found");
@@ -105,12 +106,18 @@ public class Receiver {
 
                 if (commandLine.equals("add")) {
                     bands.add(DOMReaderScript.parseScriptAddCommand(fileName));
+                    isEmpty = false;
                 } else {
                     new Invoker(in).invoke(commandLine);
+                    isEmpty = false;
                 }
             }
         } catch (Exception e) {
             System.err.println("Error while executing script " + e.getMessage());
+        } finally {
+            if (isEmpty) {
+                System.out.println("Script doesn't contain any commands");
+            }
         }
     }
 

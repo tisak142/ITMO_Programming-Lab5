@@ -17,10 +17,22 @@ import java.util.Set;
 
 import static org.example.Receiver.isDateNotLaterThanToday;
 
+/**
+ * Класс для чтения данных о музыкальных группах из XML-файла скрипта.
+ * <p>
+ * Обеспечивает парсинг XML-данных и создание объектов MusicBand
+ * для последующего добавления в коллекцию.
+ * </p>
+ */
 public class DOMReaderScript {
     private static Receiver receiver = Receiver.getInstance();
 
-
+    /**
+     * Парсит команду добавления из XML-скрипта.
+     *
+     * @param filePath путь к файлу скрипта
+     * @return объект MusicBand или null, если произошла ошибка
+     */
     public static MusicBand parseScriptAddCommand(String filePath) {
         StringBuilder xmlContent = new StringBuilder();
         boolean musicBandFound = false;
@@ -81,6 +93,12 @@ public class DOMReaderScript {
         }
     }
 
+    /**
+     * Парсит элемент musicBand из XML-документа.
+     *
+     * @param element XML-элемент musicBand
+     * @return объект MusicBand или null, если произошла ошибка валидации
+     */
     private static MusicBand parseMusicBand(Element element) {
         // Парсинг названия группы
         String name = getElementValue(element, "name");
@@ -215,6 +233,14 @@ public class DOMReaderScript {
         // Создание объекта MusicBand
         return new MusicBand(name, coordinates, numberOfParticipants, genre, frontMan);
     }
+
+    /**
+     * Получает текстовое значение элемента по имени тега.
+     *
+     * @param element родительский XML-элемент
+     * @param tagName имя искомого тега
+     * @return текстовое содержимое элемента или null, если элемент не найден
+     */
     private static String getElementValue(Element element, String tagName) {
         NodeList nodeList = element.getElementsByTagName(tagName);
         if (nodeList.getLength() > 0) {
