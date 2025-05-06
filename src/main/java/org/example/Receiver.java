@@ -105,7 +105,10 @@ public class Receiver {
                 // Выполняем команду
 
                 if (commandLine.equals("add")) {
-                    bands.add(DOMReaderScript.parseScriptAddCommand(fileName));
+                    MusicBand parsedBand = DOMReaderScript.parseScriptAddCommand(fileName);
+                    if (parsedBand != null) {
+                        bands.add(parsedBand);
+                    }
                     isEmpty = false;
                 } else {
                     new Invoker(in).invoke(commandLine);

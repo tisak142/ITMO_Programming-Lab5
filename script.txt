@@ -4,7 +4,7 @@ add
 <musicBand asa="asas">
     <name>Pink Floyd</name>
     <coordinates>
-        <x>10.5</x>
+        <x>"sergei"</x>
         <y>860</y>
     </coordinates>
     <numberOfParticipants>5</numberOfParticipants>

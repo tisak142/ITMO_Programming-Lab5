@@ -44,7 +44,7 @@ public class ExecuteScriptCommand implements Command {
             return;
         }
         String fileName = args[0];
-        receiver.executeScript(in, fileName);
+        receiver    .executeScript(in, fileName);
     }
 
     /**

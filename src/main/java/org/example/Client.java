@@ -26,7 +26,7 @@ public class Client {
         try (Scanner in = new Scanner(System.in)) {
             Invoker invoker = new Invoker(in);
             while (true) {
-                System.out.print("$ ");
+                System.out.print("✌ ");
                 String line = in.nextLine();
                 invoker.invoke(line);
             }

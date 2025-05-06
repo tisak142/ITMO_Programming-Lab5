@@ -36,7 +36,6 @@ public class DOMReaderScript {
     public static MusicBand parseScriptAddCommand(String filePath) {
         StringBuilder xmlContent = new StringBuilder();
         boolean musicBandFound = false;
-
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
 
